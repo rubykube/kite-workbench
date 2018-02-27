@@ -3,7 +3,7 @@
     {
       "type": "shell",
       "execute_command": "chmod +x {{ .Path }}; sudo {{ .Vars }} {{ .Path }}",
-      "script": "scripts/install_deps.sh"
+      "script": "scripts/provision.sh"
     }
   ],
   "builders": [

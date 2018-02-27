@@ -1,0 +1,30 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "debian/stretch64"
+  config256.vm.hostname = "workbench"
+
+  # SSH settings
+  config.ssh.username = 'kite'
+  config.ssh.password = ''
+
+  # Internal IP of the vm
+  config.vm.network :private_network, ip: "192.168.0.42"
+
+  # Shell script to provision the vm with
+  Vagrant.configure("2") do |config|
+    config.vm.provision "shell", privileged: true, path: "../../../scripts/provision.sh"
+  end
+
+  # Forwarded ports for Peatio and Barong
+  config.vm.network "forwarded_port", guest: 8000, host: 8000
+  config.vm.network "forwarded_port", guest: 8001, host: 8001
+
+  # Synced folders for Peatio and Barong
+  config.vm.synced_folder "peatio/", "/home/kite/peatio", owner: "kite", group: "users"
+  config.vm.synced_folder "barong/", "/home/kite/barong", owner: "kite", group: "users"
+
+  # Configure VM hardware options
+  config.vm.provider :virtualbox do |v|
+    v.memory = 4096
+    v.cpus   = 2
+  end
+end

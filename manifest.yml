@@ -1,2 +1,4 @@
 name: "workbench"
 description: "Kite module for building and deploying workbenches"
+variables:
+  provider: "virtualbox" # Other option is googlecompute
