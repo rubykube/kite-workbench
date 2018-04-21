@@ -1,0 +1,18 @@
+variable "zone" {
+  type = "string"
+}
+
+variable "machine_type" {
+  type = "string"
+}
+
+variable "image" {
+  type = "string"
+}
+
+module "workbench" {
+  source        = "../../../modules/kite-workbench/modules/platform"
+  zone          = "${var.zone}"
+  machine_type  = "${var.machine_type}"
+  image         = "${var.image}"
+}

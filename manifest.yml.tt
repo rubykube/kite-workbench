@@ -1,0 +1,6 @@
+name: "workbench"
+description: "Kite module for building and deploying Peatio workbenches"
+variables:
+  terraform:
+    image:        "workbench-1524321561"
+    machine_type: "n1-standard-1"
